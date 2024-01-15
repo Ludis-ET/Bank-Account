@@ -1,18 +1,16 @@
 #include<iostream>
 #include<cctype>
-
 using namespace std;
-
 int main(){
     // variables
     int total_numbers = 100; // total number of accounts
     int count = 1; // number of accounts that have been created?
     int logged_in_user = -1; // the index of logged in user
-    char transaction;
-    bool check_user = true,terminate=false;
-    int login_acc,login_pin,my_acc,new_acc,new_balance = -1;
     int manager_password = 123, manager_account = 1001000,  system_constant = 1001;
     float manager_balance = 1.5;
+    int login_acc,login_pin,my_acc,new_acc,new_balance = -1;
+    char transaction;
+    bool check_user = true,terminate=false;
 
     // array of account
     int account[total_numbers][2] = {
@@ -158,10 +156,10 @@ int main(){
                                 }
                             }else if (transaction == 'p'){
                                 cout<<"\n\nAll data:\n";
-                                cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t|\n";
+                                cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t\t|\n";
                                 for (int i = 1; i <= total_numbers-1; i++){
                                     if (account[i][0] != 0){
-                                        cout<<"\t|\t"<<i<<"\t|\t"<<account[i][0]<<"\t\t|\t$"<<balance[i]<<"\t|\n";
+                                        cout<<"\t|\t"<<i<<"\t|\t"<<account[i][0]<<"\t\t|\t$"<<balance[i]<<"\t\t|\n";
                                     }
                                 }
                                 cout<<endl<<count-1<<" accounts found.\n";
