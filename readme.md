@@ -1,6 +1,6 @@
 # Bank Account Management Program
 
-## Group Project: Bank Account Management Program
+
 ## Group Name: Bro Code
 
 **Group Members:**
