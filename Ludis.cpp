@@ -7,7 +7,7 @@ int main(){
     // variables
     int total_numbers = 100; // total number of accounts
     int count = 1; // number of accounts that have been created?
-    int logged_in_user = 0; // the index of logged in user
+    int logged_in_user = -1; // the index of logged in user
     char transaction;
     int login_acc,login_pin = 0,my_acc,new_acc;
     int manager_password = 1234, manager_account = 1001000, manager_balance = 0, system_constant = 1001;
@@ -41,7 +41,12 @@ int main(){
                 cout<<"Choose a 3 digit pin code that starts without 0 for your account :";
                 cin>>login_pin;
             }
-            
+            new_acc = manager_account + count;
+            cout<<"Your account is created successfully!\n"<<"Your account number is "<<new_acc<<endl;
+            account[count][0] = new_acc;
+            account[count][1] = login_pin;
+            logged_in_user = count;
+            count++;
         }else{
             if (logged_in_user < 0){
                 cout<<"You are not logged in\n"<<"Enter your account number : "<<system_constant;
