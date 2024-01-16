@@ -22,7 +22,7 @@ int main(){
     while(terminate == false){
         cout<<"*******************************************\n";
         cout<<"**                                       **\n";
-        cout<<"**                 Help                  **\n";
+        cout<<"**             --Help--                  **\n";
         cout<<"**       Enter O to create new account   **\n";
         cout<<"**       Enter B for balance inquiry     **\n";
         cout<<"**       Enter D to deposit              **\n";
@@ -31,7 +31,7 @@ int main(){
         cout<<"**       Enter S if you are a manager    **\n";
         cout<<"**                                       **\n";
         cout<<"*******************************************\n";
-        cout<<"\n\tEnter any command ->";
+        cout<<"\n\tEnter any transaction ->";
         cin>>transaction;
         transaction = toupper(transaction);
         login_pin = 0;
