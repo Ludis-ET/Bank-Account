@@ -137,7 +137,7 @@ int main(){
                             cout<<"\tEnter E to close all accounts and exit program\n";
                             cout<<"\tEnter any other character to get back to main menu\n";
                             cout<<"\tYour account number is: "<<account[logged_in_user][0]<<"\n";
-                            cout<<"\t\tWhat do you want :";
+                            cout<<"\t\tEnter transaction :";
                             cin>>transaction;
                             transaction = tolower(transaction);
 
