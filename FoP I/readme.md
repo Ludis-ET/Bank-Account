@@ -2,13 +2,6 @@
 
 ## Group Project: Bro Code
 
-**Group Members:**
-- Leulseged Melaku
-- Liben Gebremedhin
-- Lemesa Elias
-- Lakemihret Getachew
-- Liyuneh Rstey
-
 **Course Information:**
 - Course: Fundamental of Programming I
 - Instructor: Chere Lemma
