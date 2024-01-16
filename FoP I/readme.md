@@ -1,7 +1,6 @@
-# Bank Account Management Program
+# Bro Code Bank Account Management
 
-
-## Group Name: Bro Code
+## Group Project: Bro Code
 
 **Group Members:**
 - Leulseged Melaku
@@ -10,12 +9,11 @@
 - Lakemihret Getachew
 - Liyuneh Rstey
 
-This program is a collaborative effort by the Bro Code group. It is designed to manage a system of bank accounts, supporting various transactions, including opening an account, checking balances, making deposits and withdrawals, closing accounts, computing interest, and printing account information.
+**Course Information:**
+- Course: Fundamental of Programming I
+- Instructor: Chere Lemma
 
-
-
-
-
+This program is a collaborative effort by the Bro Code group for the Fundamental of Programming I course. It is designed to manage a system of bank accounts, supporting various transactions, including opening an account, checking balances, making deposits and withdrawals, closing accounts, computing interest, and printing account information.
 
 ## Instructions
 
@@ -71,3 +69,4 @@ This program is a collaborative effort by the Bro Code group. It is designed to 
 - **Account Initialization:**
   - In an 'Open' transaction, the user chooses the pin number for the account.
 
+Feel free to modify the program according to your specific requirements.
