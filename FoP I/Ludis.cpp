@@ -22,7 +22,8 @@ int main(){
     while(terminate == false){
         cout<<"*******************************************\n";
         cout<<"**                                       **\n";
-        cout<<"**             --Help--                  **\n";
+        cout<<"**   --List of Transactions--            **\n";
+        cout<<"**                                       **\n";
         cout<<"**       Enter O to create new account   **\n";
         cout<<"**       Enter B for balance inquiry     **\n";
         cout<<"**       Enter D to deposit              **\n";
