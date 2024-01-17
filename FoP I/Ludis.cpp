@@ -151,42 +151,50 @@ int main(){
                             cin>>transaction;
                             transaction = tolower(transaction);
 
-                            if (transaction == 'i'){
-                                cout<<"Interest rate? (0% - 100%):";
-                                cin>>interest;
-                                if(interest >= 0 && interest <= 100){
-                                    for (int i = 0; i <= total_numbers-1; i++){
-                                        temp = balance[i];
-                                        temp *= (interest/100);
-                                        balance[i] += temp;
+
+                            switch(transaction){
+                                case 'i':
+                                    cout<<"Interest rate? (0% - 100%):";
+                                    cin>>interest;
+                                    if(interest >= 0 && interest <= 100){
+                                        for (int i = 0; i <= total_numbers-1; i++){
+                                            temp = balance[i];
+                                            temp *= (interest/100);
+                                            balance[i] += temp;
+                                        }
+                                        cout<<interest<<"% amount of money has been added to "<<count-1<<" accounts in the database.\n";
+                                    }else{
+                                        cout<<"Interest have to be between 0% and 100%";
                                     }
-                                    cout<<interest<<"% amount of money has been added to "<<count-1<<" accounts in the database.\n";
-                                }else{
-                                    cout<<"Interest have to be between 0% and 100%";
-                                }
-                            }else if (transaction == 'p'){
-                                cout<<"\n\nAll data:\n";
-                                cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t\t|\n";
-                                for (int i = 1; i <= total_numbers-1; i++){
-                                    if (account[i][0] != 0){
-                                        cout<<"\t|\t"<<i<<"\t|\t"<<account[i][0]<<"\t\t|\t$"<<balance[i]<<"\t\t|\n";
+                                    break;
+                                case 'p':
+                                    cout<<"\n\nAll data:\n";
+                                    cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t\t|\n";
+                                    for (int i = 1; i <= total_numbers-1; i++){
+                                        if (account[i][0] != 0){
+                                            cout<<"\t|\t"<<i<<"\t|\t"<<account[i][0]<<"\t\t|\t$"<<balance[i]<<"\t\t|\n";
+                                        }
                                     }
-                                }
-                                cout<<endl<<count-1<<" accounts found.\n";
-                            }else if (transaction == 'e'){
-                                cout<<"Are you sure you want to close all the account?(Y/n) :";
-                                cin>>confirm;
-                                if (confirm == 'Y'){
-                                    cout<<"bank opreation terminated\n";
+                                    cout<<endl<<count-1<<" accounts found.\n";
+                                    break;
+                                case 'e':
+                                    cout<<"Are you sure you want to close all the account?(Y/n) :";
+                                    cin>>confirm;
+                                    if (confirm == 'Y'){
+                                        cout<<"bank opreation terminated\n";
+                                        terminate = true;
+                                        break;
+                                    }else{
+                                        cout<<"opreation cancelled!\n";
+                                    }
+                                    break;
+                                default:
+                                    cout<<"Getting out of admin pannel...\n";
                                     terminate = true;
                                     break;
-                                }else{
-                                    cout<<"opreation cancelled!\n";
-                                }
-                            }else{
-                                break;
                             }
-                        }while(true)
+                        }while(terminate = false);
+                        terminate = false;
                     }else{
                         cout<<"You have no permission to access this transaction\n";
                     }
