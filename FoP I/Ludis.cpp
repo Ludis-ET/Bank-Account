@@ -12,6 +12,11 @@ int main(){
     char transaction;
     bool check_user = true,terminate=false;
 
+
+    // manager variables
+    float interest,temp;
+    char confirm;
+
     // array of account
     int account[total_numbers][2] = {
         {manager_account,manager_password},
@@ -88,10 +93,13 @@ int main(){
 
             // transactions
             if (logged_in_user >= 0){
-                if (transaction == 'B'){
+                switch (transaction)
+                {
+                case 'B':
                     cout<<"Your account number is :"<<account[logged_in_user][0]<<endl;
                     cout<<"Your balance is: $"<<balance[logged_in_user]<<endl;
-                }else if(transaction == 'D'){
+                    break;
+                case 'D':
                     cout<<"Your account number is :"<<account[logged_in_user][0]<<endl;
                     cout<<"Your current balance is: $"<<balance[logged_in_user]<<endl;
                     cout<<"Deposit ammount: $";
@@ -102,7 +110,8 @@ int main(){
                     }else{
                         cout<<"Deposit ammount must be greator than 0\n";
                     }
-                }else if(transaction == 'W'){
+                    break;
+                case 'W':
                     cout<<"Your account number is :"<<account[logged_in_user][0]<<endl;
                     cout<<"Your current balance is: $"<<balance[logged_in_user]<<endl;
                     cout<<"Withdrawal ammount: $";
@@ -113,7 +122,9 @@ int main(){
                     }else{
                         cout<<"Ammount have to be less than your balance\n"<<"Your balance is :$"<<balance[logged_in_user]<<endl;
                     }
-                }else if(transaction == 'C'){
+                    break;
+                case 'C':
+
                     cout<<"Your account number is :"<<account[logged_in_user][0]<<endl;
                     cout<<"Are you sure you want to close your account?(Y/n) :";
                     char confirm;
@@ -124,14 +135,12 @@ int main(){
                     }else{
                         cout<<"opreation cancelled!\n";
                     }
-                }else if(transaction == 'S'){
-
-                    // manager variables
-                    float interest,temp;
-                    char confirm;
+                    break;
+                
+                case 'S':
 
                     if (logged_in_user == 0){
-                        while(true){
+                        do{
                             cout<<"\n\nWelcome to the managers pannel choose what you want to do.\n";
                             cout<<"\tEnter I to compute the interest.\n";
                             cout<<"\tEnter P to print all the accounts and amounts\n";
@@ -177,13 +186,15 @@ int main(){
                             }else{
                                 break;
                             }
-                        }
+                        }while(true)
                     }else{
                         cout<<"You have no permission to access this transaction\n";
                     }
-                }else{
+                    break;
+                
+                default:
                     cout<<"Invalid transaction entered please choose one from the menu.\n";
-                    continue;
+                    break;
                 }
                 
             }else{
