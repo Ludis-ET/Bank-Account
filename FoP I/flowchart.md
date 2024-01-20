@@ -50,7 +50,9 @@
 
     H --> |True| I{logged_in_user >= 0}
 
-    H --> |False| I1[/ print The maximum number of accounts has been reached. You can't create a new account now. /]
+    I --> |True| J[/print 'to create an account you've to log out'/]
+
+    H --> |False| I1[/ print 'The maximum number of accounts has been reached. You can't create a new account now.' /]
 
     I1 --> D
 
