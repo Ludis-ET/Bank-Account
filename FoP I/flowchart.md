@@ -91,7 +91,19 @@
 
     N --> N1[/read login_acc/]
 
-    
+    N1 --> N5{account[login_acc][0] = 0}
+
+    N5 --> |True| N6["print 'No account found please try again!' "]
+
+    N5 --> |False| N4
+
+    M -- |False| N2["login_acc = account[logged_in_user][0] - manager_account"]
+
+    N2 --> N3[/print 'Your account number: account[logged_in_user][0]'/]
+
+    N3 --> N4[/read login_pin/]
+
+
 
 
 
