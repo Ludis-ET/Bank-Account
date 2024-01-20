@@ -38,7 +38,6 @@
 
 
     D -->|False| F[Process]
-    <!-- D-->E([end]); -->
 ```
 
 
@@ -52,5 +51,6 @@ flowchart
   C -->|False| F[Process]
   E --> G((End))
   F --> G((End))
+  D-->E([end]);
 
 ```
