@@ -62,7 +62,19 @@
 
     J1 --> |True| J2["print 'Choose a 3 digit pin code that starts without 0 for your account' "]
 
-    J1 --> |False| J1
+    J1 --> |False| K["new_acc = manager_account + count"]
+    
+    K --> L[/print 'Your account is created successfully! Your account number is new_acc'/]
+
+    L --> L1["
+    account[count][0] = new_acc
+    account[count][1] = login_pin
+    balance[count] = new_balance
+    logged_in_user = count
+    count = count + 1
+    "]
+
+    L1 --> D
 
     J2 --> J3[/read login_pin/]
 
