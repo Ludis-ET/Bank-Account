@@ -84,6 +84,15 @@
 
     J5 --> J1
 
+    G --> |False| M{logged_in_user < 0}
+
+    M --> |True| N["print 'You are not logged in.
+    Enter your account number :' system_constant "]
+
+    N --> N1[/read login_acc/]
+
+    
+
 
 
     
