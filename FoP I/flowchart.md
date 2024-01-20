@@ -34,15 +34,24 @@
 
 
     C-->D{terminate = false}
+
     D -->|True| E[/read transaction/]
+
     D -->|False| E1([End]);
+
     E -->F["
         transaction = toupper(transaction)
         login_pin = 0
     "]
+
     F --> G{transaction = 'O'}
+
     G --> |True| H{cout < total_numbers}
+
+    H --> |True| I{logged_in_user >= 0}
+
     H --> |False| I1[/ print The maximum number of accounts has been reached. You can't create a new account now. /]
+
     I1 --> D
 
 
