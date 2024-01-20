@@ -31,7 +31,13 @@
     balance[total_numbers] = {{manager_balance}}
 
     "];
-    C-->D[/prdistance/];
+
+
+    C-->D{terminate = false};
+    D -->|True| D[Initialize Variables]
+
+
+    D -->|False| F[Process]
     D-->E([end]);
 ```
 
