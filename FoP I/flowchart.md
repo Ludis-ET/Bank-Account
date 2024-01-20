@@ -1,5 +1,6 @@
 flowchart
-```graph TD
+```mermaid
+    flowchart TD;
   A((Start)) -->|User Input| B{Input}
   B -->|Condition| C[If-Else]
   C -->|True| D[Initialize Variables]
