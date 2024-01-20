@@ -35,6 +35,7 @@
 
     C-->D{terminate = false}
     D -->|True| E[/read transaction/]
+    D -->|False| E1([End]);
     E -->F["
         transaction = toupper(transaction)
         login_pin = 0
