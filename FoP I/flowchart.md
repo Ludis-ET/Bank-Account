@@ -43,6 +43,8 @@
     F --> G{transaction = 'O'}
     G --> |True| H{cout < total_numbers}
     G --> |False| H1[/ print The maximum number of accounts has been reached. You can't create a new account now. /]
+    H1 --> E
+    
 
 
     
