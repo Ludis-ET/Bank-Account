@@ -6,17 +6,17 @@
     total_numbers = 100,
     count = 1,
     logged_in_user = -1,
-    system_constant = 1001;
+    system_constant = 1001
 
 
     manager_password = 123,
     manager_account = 1001000,
-    float manager_balance = 1.5;
+    float manager_balance = 1.5
     
     new_balance = -1;
 
     check_user = true,
-    terminate=false;
+    terminate=false
     
     "];
 
@@ -39,6 +39,8 @@
         transaction = toupper(transaction)
         login_pin = 0
     "]
+    F --> G{transaction = 'O'}
+    G --> |True| G1{cout < total_numbers}
 
 
     
