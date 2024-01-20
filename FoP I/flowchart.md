@@ -1,7 +1,8 @@
 ```mermaid
     flowchart TD;
     A([start])-->B["
-    intializations  
+    intializations 
+
     total_numbers = 100,
     count = 1,
     logged_in_user = -1,
@@ -18,7 +19,18 @@
     terminate=false;
     
     "];
-    B-->C["distance= miles per gallon*capacity in gallon"];
+
+
+    B-->C["
+    
+    intialising the account and balace array
+
+    account[total_numbers][2] = {
+        {manager_account,manager_password},
+    }
+    balance[total_numbers] = {{manager_balance}}
+
+    "];
     C-->D[/prdistance/];
     D-->E([end]);
 ```
