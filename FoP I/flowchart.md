@@ -34,7 +34,7 @@
 
 
     C-->D{terminate = false}
-    D -->|True| D[Initialize Variables]
+    D -->|True| E[Initialize Variables]
 
 
     D -->|False| F[Process]
