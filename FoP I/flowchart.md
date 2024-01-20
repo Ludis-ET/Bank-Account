@@ -56,9 +56,7 @@
 
     I --> |True| J[/print 'to create an account you've to log out'/]
 
-    I --> |False| J1{login_pin < 100 or
-     login_pin >= 1000 or
-      new_balance <= 10}
+    I --> |False| J1{login_pin < 100 or login_pin >= 1000 or new_balance <= 10}
 
     J1 --> |True| J2["print 'Choose a 3 digit pin code that starts without 0 for your account' "]
 
