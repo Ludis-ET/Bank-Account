@@ -50,13 +50,27 @@
 
     H --> |True| I{logged_in_user >= 0}
 
-    I --> |True| J[/print 'to create an account you've to log out'/]
-
-    I --> |False| J1{login_pin < 100 or login_pin >= 1000 or new_balance <= 10}
-
     H --> |False| I1[/ print 'The maximum number of accounts has been reached. You can't create a new account now.' /]
 
     I1 --> D
+
+    I --> |True| J[/print 'to create an account you've to log out'/]
+
+    I --> |False| J1{login_pin < 100 or
+     login_pin >= 1000 or
+      new_balance <= 10}
+
+    J1 --> |True| J2["print 'Choose a 3 digit pin code that starts without 0 for your account' "]
+
+    J1 --> |False| J1
+
+    J2 --> J3[/read login_pin/]
+
+    J3 --> J4["print 'Deposit money (minimum amount - $10) : $' "]
+
+    J4 --> J5[/read new_balance/]
+
+    J5 --> J1
 
 
 
