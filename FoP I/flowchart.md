@@ -1,6 +1,6 @@
 ```mermaid
     flowchart TD;
-    A([start])-->B["
+    A([Start])-->B["
     intializations 
 
     total_numbers = 100,
@@ -35,6 +35,10 @@
 
     C-->D{terminate = false}
     D -->|True| E[/read transaction/]
+    E -->F["
+        transaction = toupper(transaction)
+        login_pin = 0
+    "]
 
 
     D -->|False| F[Process]
