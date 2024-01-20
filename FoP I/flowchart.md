@@ -52,6 +52,8 @@
 
     I --> |True| J[/print 'to create an account you've to log out'/]
 
+    I --> |False| J1{login_pin < 100 or login_pin >= 1000 or new_balance <= 10}
+
     H --> |False| I1[/ print 'The maximum number of accounts has been reached. You can't create a new account now.' /]
 
     I1 --> D
