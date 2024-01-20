@@ -34,7 +34,7 @@
 
 
     C-->D{terminate = false}
-    D -->|True| E[Initialize Variables]
+    D -->|True| E[/read transaction/]
 
 
     D -->|False| F[Process]
