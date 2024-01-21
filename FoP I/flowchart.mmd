@@ -176,9 +176,7 @@ flowchart TD;
 
     V6 --> V7{i <= total_numbers-1}
 
-    V7 --> |True|V71["temp = balance[i]
-                                            temp *= (interest/100);
-                                            balance[i] += temp;"]
+    V7 --> |True|V71["temp = balance[i], temp *= (interest/100), balance[i] += temp"]
 
     V71 --> V72[i + 1]
 
