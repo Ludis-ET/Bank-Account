@@ -1,65 +1,169 @@
-# Bro Code Bank Account Management
+```mermaid
+    flowchart TD;
+    A([Start])-->B["
+    intializations 
 
-## Group Project: Bro Code
+    total_numbers = 100,
+    count = 1,
+    logged_in_user = -1,
+    system_constant = 1001
 
-**Course Information:**
-- Course: Fundamental of Programming I
-- Instructor: Chere Lemma
 
-This program is a collaborative effort by the Bro Code group for the Fundamental of Programming I course. It is designed to manage a system of bank accounts, supporting various transactions, including opening an account, checking balances, making deposits and withdrawals, closing accounts, computing interest, and printing account information.
+    manager_password = 123,
+    manager_account = 1001000,
+    float manager_balance = 1.5
+    
+    new_balance = -1;
 
-## Instructions
+    check_user = true,
+    terminate=false
+    
+    "];
 
-1. **Open an Account (Transaction type: O)**
-    - Initial deposit? *amount*
-    - Open an account, giving the initial deposit.
-    - Allowed if less than 100 accounts are open.
-    - Prints the new account number.
 
-2. **Balance Inquiry (Transaction type: B)**
-    - Account number? *account_number*
-    - A balance inquiry prints the account number and the balance, only allowed if the account is open.
+    B-->C["
+    
+    intialising the account and balace array
 
-3. **Deposit (Transaction type: D)**
-    - Account number? *account_number*
-    - Amount? *amount*
-    - A deposit prints the account number and the new balance, only allowed if the account is open.
+    account[total_numbers][2] = {
+        {manager_account,manager_password},
+    }
+    balance[total_numbers] = {{manager_balance}}
 
-4. **Withdrawal (Transaction type: W)**
-    - Account number? *account_number*
-    - Amount? *amount*
-    - A withdrawal, only allowed if the account is open and sufficient funds are available.
-    - Prints the account number and the new balance.
+    "];
 
-5. **Close Account (Transaction type: C)**
-    - Account number? *account_number*
-    - Close the account, only allowed if the account is open.
 
-6. **Compute Interest (Transaction type: I)**
-    - Interest rate? *interest_rate*
-    - Compute interest at the given percentage rate and apply it to all accounts.
+    C-->D{terminate = false};
 
-7. **Print Account Information (Transaction type: P)**
-    - Print all account numbers and amounts OR
-    - Print the account and all corresponding transactions in tabular format.
+    D -->|True| E[/read transaction/];
 
-8. **Exit Program (Transaction type: E)**
-    - Close all accounts and exit the program.
+    D -->|False| E1([End]);
 
-### Additional Features
+    E -->F["
+        transaction = toupper(transaction)
+        login_pin = 0
+    "];
 
-- **Security:**
-  - Pin numbers are added to the bank accounts.
-  - A special pin number is assigned to the bank manager.
-  - Transaction type 'S' is added to open the bank, accessible only to the manager.
+    F --> G{transaction = 'O'};
 
-- **Manager Transactions (Accessible only to the manager):**
-  - S: Open the bank.
-  - P: Print account information.
-  - I: Compute interest.
-  - E: Exit program.
+    G --> |True| H{cout < total_numbers};
 
-- **Account Initialization:**
-  - In an 'Open' transaction, the user chooses the pin number for the account.
+    H --> |True| I{logged_in_user >= 0};
 
-Feel free to modify the program according to your specific requirements.
+    H --> |False| I1[/ print 'The maximum number of accounts has been reached. You can't create a new account now.' /];
+
+    I1 --> D;
+
+    I --> |True| J[/print 'to create an account you've to log out'/];
+
+    J --> D;
+
+    I --> |False| J1{login_pin < 100 or login_pin >= 1000 or new_balance <= 10};
+
+    J1 --> |True| J2[/print 'Choose a 3 digit pin code that starts without 0 for your account' /];
+
+    J1 --> |False| K["new_acc = manager_account + count"];
+    
+    K --> L[/print 'Your account is created successfully! Your account number is new_acc'/];
+
+    L --> L1["
+    account[count][0] = new_acc
+    account[count][1] = login_pin
+    balance[count] = new_balance
+    logged_in_user = count
+    count = count + 1
+    "];
+
+    L1 --> D;
+
+    J2 --> J3[/read login_pin/];
+
+    J3 --> J4[/print 'Deposit money --minimum amount - $10 : $' /];
+
+    J4 --> J5[/read new_balance/];
+
+    J5 --> J1;
+
+    G --> |False| M{logged_in_user < 0};
+
+
+    M --> |True| N[/print 'You are not logged in Enter your account number : + system_constant'/]
+
+    N --> O[/read login_acc/]
+
+    O --> P{account--login_acc--0-- = 0}
+
+    P --> |True| P1[/print 'No account found please try again!'/]
+
+    P1 --> D
+
+    M --> |False| N1["login_acc = account[logged_in_user][0] - manager_account Your account number: account[logged_in_user][0]"]
+
+    N1 --> N2[/read login_pin/]
+
+    P --> |False| N2
+
+    N2 --> N4["my_acc = manager_account + login_acc"]
+
+    N4 --> Q{account'login_acc''0' == my_acc and account'login_acc''1' == login_pin}
+
+    Q --> |True| Q1["logged_in_user = login_acc"]
+
+    Q --> |False| Q2[/print 'Invalid Pin Code, Login denied!'/]
+
+    Q2 --> D
+
+    Q1 --> R{logged_in_user >= 0}
+
+    R --> |False| R1[/print 'Login first to access this page!'/]
+
+    R1 --> D
+
+    R  -->|True| R5[/print Your account number is : account-logged_in_user--0-/]
+    
+    R5 --> S{transaction='B'}
+
+    S --> |True| T[/Your balance is: $" balance-logged_in_user-/]
+
+    T --> |Break| T1
+
+    S --> |False| S1{transaction = 'D'}
+
+    S1 --> |True| T2[/ Your current balance is: $balance-logged_in_user-/]
+
+    T2 --> T3[/read new_balance/]
+
+    T3 --> T4["balance[logged_in_user] += new_balance"]
+
+    T4 --> |Break| T1
+
+    S1 --> |False| S2{transaction = 'W'}
+
+    S2 --> |True| T5[/read new_balance/]
+
+    T5 --> T6["balance[logged_in_user] -= new_balance"]
+
+    T6 --> |Break| T1
+
+    S2 --> |False| S3{transaction = 'C'}
+
+    S3 --> |True| T7[logged_in_user = -1]
+
+    T7 --> |Break| T1
+
+    S3 --> |False| S4{transaction = 'S'}
+
+    S4 --> |True| U{logged_in_user = 0}
+
+    U --> |False| U1[You have no permission to access this transaction]
+
+    U1  --> |Break| T1
+
+    U --> |True| U2{terminate = true}
+
+    S4 --> |False| S5[Default]
+
+    T1[continue] --> D
+
+
+```

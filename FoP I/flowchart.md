@@ -1,6 +1,6 @@
 ```mermaid
     flowchart TD;
-    A([Start])-->B["
+    A([Start])-->B[```
     intializations 
 
     total_numbers = 100,
@@ -8,104 +8,75 @@
     logged_in_user = -1,
     system_constant = 1001
 
-
     manager_password = 123,
     manager_account = 1001000,
-    float manager_balance = 1.5
-    
+    manager_balance = 15  // Assuming you intended to represent 1.5 as 15
+
     new_balance = -1;
 
     check_user = true,
     terminate=false
-    
-    "];
+    ```];
 
-
-    B-->C["
-    
-    intialising the account and balace array
+    B-->C[```
+    intialising the account and balance array
 
     account[total_numbers][2] = {
-        {manager_account,manager_password},
+        {manager_account, manager_password},
     }
     balance[total_numbers] = {{manager_balance}}
+    ```];
 
-    "];
+    C-->D{terminate = false};
 
-
-    C-->D{terminate = false}
-
-    D -->|True| E[/read transaction/]
+    D -->|True| E[/read transaction/];
 
     D -->|False| E1([End]);
 
-    E -->F["
+    E -->F[```
         transaction = toupper(transaction)
         login_pin = 0
-    "]
+    ```];
 
-    F --> G{transaction = 'O'}
+    F --> G{transaction = 'O'};
 
-    G --> |True| H{cout < total_numbers}
+    G --> |True| H{cout < total_numbers};
 
-    H --> |True| I{logged_in_user >= 0}
+    H --> |True| I{logged_in_user >= 0};
 
-    H --> |False| I1[/ print 'The maximum number of accounts has been reached. You can't create a new account now.' /]
+    H --> |False| I1[/ print 'The maximum number of accounts has been reached. You can't create a new account now.' /];
 
-    I1 --> D
+    I1 --> D;
 
-    I --> |True| J[/print 'to create an account you've to log out'/]
+    I --> |True| J[/print 'to create an account you've to log out'/];
 
-    J --> D
+    J --> D;
 
-    I --> |False| J1{login_pin < 100 or login_pin >= 1000 or new_balance <= 10}
+    I --> |False| J1{login_pin < 100 or login_pin >= 1000 or new_balance <= 10};
 
-    J1 --> |True| J2["print 'Choose a 3 digit pin code that starts without 0 for your account' "]
+    J1 --> |True| J2[/print 'Choose a 3 digit pin code that starts without 0 for your account' /];
 
-    J1 --> |False| K["new_acc = manager_account + count"]
+    J1 --> |False| K["new_acc = manager_account + count"];
     
-    K --> L[/print 'Your account is created successfully! Your account number is new_acc'/]
+    K --> L[/print 'Your account is created successfully! Your account number is new_acc'/];
 
-    L --> L1["
+    L --> L1[```
     account[count][0] = new_acc
     account[count][1] = login_pin
     balance[count] = new_balance
     logged_in_user = count
     count = count + 1
-    "]
+    ```];
 
-    L1 --> D
+    L1 --> D;
 
-    J2 --> J3[/read login_pin/]
+    J2 --> J3[/read login_pin/];
 
-    J3 --> J4["print 'Deposit money (minimum amount - $10) : $' "]
+    J3 --> J4[/print 'Deposit money (minimum amount - $10) : $' /];
 
-    J4 --> J5[/read new_balance/]
+    J4 --> J5[/read new_balance/];
 
-    J5 --> J1
+    J5 --> J1;
 
-    G --> |False| M{logged_in_user < 0}
-
-    M --> |True| N["print 'You are not logged in.
-    Enter your account number :' system_constant "]
-
-    N --> N1[/read login_acc/]
-
-    N1 --> N5{account[login_acc][0] = 0}
-
-    N5 --> |True| N6["print 'No account found please try again!' "]
-
-    N5 --> |False| N4
-
-    M -- |False| N2["login_acc = account[logged_in_user][0] - manager_account"]
-
-    N2 --> N3[/print 'Your account number: account[logged_in_user][0]'/]
-
-    N3 --> N4[/read login_pin/]
-
-
-
-
-
-    
+    G --> |False| M{logged_in_user < 0};
 ```
