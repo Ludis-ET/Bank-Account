@@ -68,7 +68,7 @@ int main(){
             }
         }else{
             if (logged_in_user < 0){
-                cout<<"You are not logged in\n"<<"Enter your account number : "<<system_constant;
+                cout<<"You are not logged in\n"<<"Complete your account number : "<<system_constant;
                 cin>>login_acc;
                 if (account[login_acc][0] == 0){
                     cout<<"\nNo account found please try again!\n\n";
@@ -170,9 +170,11 @@ int main(){
                                 case 'p':
                                     cout<<"\n\nAll data:\n";
                                     cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t\t|\n";
+                                    cout<<"\t\t--------------------------------------------------\n";
                                     for (int i = 1; i <= total_numbers-1; i++){
                                         if (account[i][0] != 0){
                                             cout<<"\t|\t"<<i<<"\t|\t"<<account[i][0]<<"\t\t|\t$"<<balance[i]<<"\t\t|\n";
+                                            cout<<"\t\t--------------------------------------------------\n";
                                         }
                                     }
                                     cout<<endl<<count-1<<" accounts found.\n";
