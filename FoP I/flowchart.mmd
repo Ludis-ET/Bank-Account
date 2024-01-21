@@ -1,6 +1,6 @@
 flowchart TD;
-A([Start])-->B["
-intializations
+    A([Start])-->B["
+    intializations 
 
     total_numbers = 100,
     count = 1,
@@ -11,17 +11,17 @@ intializations
     manager_password = 123,
     manager_account = 1001000,
     float manager_balance = 1.5
-
+    
     new_balance = -1;
 
     check_user = true,
     terminate=false
-
+    
     "];
 
 
     B-->C["
-
+    
     intialising the account and balace array
 
     account[total_numbers][2] = {
@@ -62,7 +62,7 @@ intializations
     J1 --> |True| J2[/print 'Choose a 3 digit pin code that starts without 0 for your account' /];
 
     J1 --> |False| K["new_acc = manager_account + count"];
-
+    
     K --> L[/print 'Your account is created successfully! Your account number is new_acc'/];
 
     L --> L1["
@@ -119,7 +119,7 @@ intializations
     R1 --> D
 
     R  -->|True| R5[/print Your account number is : account-logged_in_user--0-/]
-
+    
     R5 --> S{transaction='B'}
 
     S --> |True| T[/Your balance is: $" balance-logged_in_user-/]
