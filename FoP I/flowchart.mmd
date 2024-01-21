@@ -117,39 +117,3 @@ flowchart TD;
     R --> |False| R1[/print 'Login first to access this page!'/]
 
     R1 --> D
-
-    R  -->|True| R5[/print Your account number is : account-logged_in_user--0-/]
-    
-    R5 --> S{transaction='B'}
-
-    S --> |True| T[/Your balance is: $" balance-logged_in_user-/]
-
-    T --> |Break| T1
-
-    S --> |False| S1{transaction = 'D'}
-
-    S1 --> |True| T2[/ Your current balance is: $balance-logged_in_user-/]
-
-    T2 --> T3[/read new_balance/]
-
-    T3 --> T4["balance[logged_in_user] += new_balance"]
-
-    T4 --> |Break| T1
-
-    S1 --> |False| S2{transaction = 'W'}
-
-    S2 --> |True| T5[/read new_balance/]
-
-    T5 --> T6["balance[logged_in_user] -= new_balance"]
-
-    T6 --> |Break| T1
-
-    S2 --> |False| S3{transaction = 'C'}
-
-    S3 --> |True| T7[logged_in_user = -1]
-
-    T7 --> |Break| T1
-
-    S5 -->T1
-
-    T1[continue] --> D
