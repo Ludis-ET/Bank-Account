@@ -117,3 +117,16 @@ flowchart TD;
     R --> |False| R1[/print 'Login first to access this page!'/]
 
     R1 --> D
+
+    
+    R  -->|True| R5[/print Your account number is : account-logged_in_user--0-/]
+    
+    R5 --> S{transaction='B'}
+
+    S --> |True| T[/Your balance is: $" balance-logged_in_user-/]
+
+    T --> |Break| T1
+
+    S --> |False| S1{transaction = 'D'}
+
+    S1 --> |True| T2[/ Your current balance is: $balance-logged_in_user-/]
