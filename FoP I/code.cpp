@@ -43,11 +43,15 @@ int main(){
         transaction = toupper(transaction);
         login_pin = 0;
         
+
+        // teansaction O doesnot need logged in user
         if (transaction == 'O'){
             if (count < total_numbers){
                 if (logged_in_user >= 0){
                     cout<<"To create new account you have to log out\n";
                 }else{
+
+                    // checking is the pin is 3 digit and the balance is greator than or equal to $10
                     while (login_pin < 100 || login_pin >= 1000 || new_balance <= 10){
                         cout<<"Choose a 3 digit integer pin code that starts without 0 for your account :";
                         cin>>login_pin;
@@ -68,6 +72,8 @@ int main(){
                 cout<<"The maximum number of accounts has been reached. You can't create a new account now.\n";
             }
         }else{
+
+            // checking the user if it was logged in
             if (logged_in_user < 0){
                 cout<<"You are not logged in\n"<<"Complete your account number ('1001---'): "<<system_constant;
                 cin>>login_acc;
@@ -96,6 +102,8 @@ int main(){
             if (logged_in_user >= 0){
                 switch (transaction)
                 {
+
+                // balance transaction
                 case 'B':
                     cout<<"Your account number is :"<<account[logged_in_user][0]<<endl;
                     cout<<"Your balance is: $"<<balance[logged_in_user]<<endl;
