@@ -1,4 +1,4 @@
-# Bro Code Bank Account Management
+# Bro Code Bank Account Manual
 
 ## Group Project: Bro Code
 
