@@ -15,15 +15,16 @@ Main Program Loop:
 Step 4: Start a while loop that continues as long as terminate is false.
 a. Display Main Menu:
 
-Display the main menu with options for creating a new account, balance inquiry, deposit, withdrawal, closing an account, and accessing the manager panel.
+Step 5: Display the main menu with options for creating a new account, balance inquiry, deposit, withdrawal, closing an account, and accessing the manager panel.
 b. Get Transaction Choice:
 
-Get the user's transaction choice and convert it to uppercase.
+Step 6: Get the user's transaction choice and convert it to uppercase.
 c. Process Transaction:
 
-If the transaction choice is 'O' (create new account):
+Step 7: If the transaction choice is 'O' (create new account):
 
-If count is less than total_numbers:
+Step 8: If count is less than total_numbers:
+
 If the user is logged in:
 Print a message indicating that a new account cannot be created while logged in.
 Else:
