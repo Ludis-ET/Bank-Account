@@ -6,18 +6,18 @@ int main(){
     int total_numbers = 100; // total number of accounts
     int count = 1; // number of accounts that have been created?
     int logged_in_user = -1; // the index of logged in user
-    int manager_password = 123, manager_account = 1001000,  system_constant = 1001;
+    int manager_password = 123, manager_account = 1001000,  system_constant = 1001; // manager account and password
     float manager_balance = 1.5; // The manager's balance
     int login_acc,login_pin,my_acc,new_acc,new_balance = -1;
     char transaction;
     bool check_user = true,terminate=false;
 
 
-    // manager variables
+    //variables for the s transaction a.k.a manager pannel
     float interest,temp;
     char confirm;
 
-    // array of account
+    // array of account and balance
     int account[total_numbers][2] = {
         {manager_account,manager_password},
     }; // first for account number and second for pin code

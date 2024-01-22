@@ -64,13 +64,25 @@ This program is a collaborative effort by the Bro Code group for the Fundamental
 6. **Compute Interest (Transaction type: I)**
     - Interest rate? *interest_rate*
     - Compute interest at the given percentage rate and apply it to all accounts.
+    - Accessible only to managers.
 
 7. **Print Account Information (Transaction type: P)**
     - Print all account numbers and amounts OR
     - Print the account and all corresponding transactions in tabular format.
+    - Accessible only to managers.
 
 8. **Exit Program (Transaction type: E)**
     - Close all accounts and exit the program.
+    - Accessible only to managers.
+
+9. **Manager Transactions (Transaction type: S)**
+    - S: Open the bank.
+    - P: Print account information.
+    - I: Compute interest.
+    - E: Exit program.
+    - **Manager's Account Information:**
+      - Manager Account Number: 1001000
+      - Manager Password: 123
 
 ### Additional Features
 
@@ -79,13 +91,5 @@ This program is a collaborative effort by the Bro Code group for the Fundamental
   - A special pin number is assigned to the bank manager.
   - Transaction type 'S' is added to open the bank, accessible only to the manager.
 
-- **Manager Transactions (Accessible only to the manager):**
-  - S: Open the bank.
-  - P: Print account information.
-  - I: Compute interest.
-  - E: Exit program.
-
 - **Account Initialization:**
   - In an 'Open' transaction, the user chooses the pin number for the account.
-
-Feel free to modify the program according to your specific requirements.
