@@ -1,2 +1,8 @@
-Initialize variables: total_numbers, count, logged_in_user, manager_password, manager_account, system_constant, manager_balance, login_acc,
+
+## Pseudocode
+1. Initialize variables: total_numbers, count, logged_in_user, manager_password, manager_account, system_constant, manager_balance, login_acc,
 login_pin, my_acc, new_acc, new_balance, transaction, check_user, and terminate to their respective values.
+
+2. Initialize a 2D array account with total_numbers rows and 2 columns, and a float array balance with total_numbers elements. Set the first 
+element of account to [manager_account, manager_password] and the first element of balance to manager_balance.
+
