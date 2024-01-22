@@ -10,4 +10,11 @@ element of account to [manager_account, manager_password] and the first element 
 inquiry, deposit, withdrawal, closing an account, and accessing the manager pannel. b. Get the user's transaction choice and convert it to uppercase.
 c. If the transaction choice is 'O' (create new account):
 
+4.If count is less than total_numbers:
+ If the user is logged in:
+ Print a message indicating that a new account cannot be created while logged in.
+5.Else:
+ While the login pin is less than 100 or greater than or equal to 1000 or the new balance is less than or equal to 10:
+ Ask the user to choose a 3-digit pin code that starts without 0 and deposit an amount greater than 10.
+
 
