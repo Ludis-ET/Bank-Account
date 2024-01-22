@@ -16,5 +16,8 @@ c. If the transaction choice is 'O' (create new account):
 5.Else:
  While the login pin is less than 100 or greater than or equal to 1000 or the new balance is less than or equal to 10:
  Ask the user to choose a 3-digit pin code that starts without 0 and deposit an amount greater than 10.
-
+ Set new_acc to manager_account + count.
+ Print a message indicating that the account has been created successfully and display the account number and pin.
+ Set the account number, pin, and balance for the current count in the account and balance arrays.
+ Increment the count and logged_in_user variables.
 
