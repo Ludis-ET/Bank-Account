@@ -42,10 +42,10 @@ Step 13: Else:
 Print a message indicating that the maximum number of accounts has been reached.
 If the transaction choice is not 'O':
 
-If the user is not logged in:
+Step 14: If the user is not logged in:
 Ask the user to enter their account number.
 If the account number does not exist:
 Print a message indicating that no account was found and continue to the next iteration of the while loop.
 Continue Main Loop:
 
-Continue with the main loop.
+Step 15: Continue with the main loop.
