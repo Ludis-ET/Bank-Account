@@ -1,31 +1,46 @@
 
-## Pseudocode
-1. Initialize variables: total_numbers, count, logged_in_user, manager_password, manager_account, system_constant, manager_balance, login_acc,
-login_pin, my_acc, new_acc, new_balance, transaction, check_user, and terminate to their respective values.
 
-2. Initialize a 2D array account with total_numbers rows and 2 columns, and a float array balance with total_numbers elements. Set the first 
-element of account to [manager_account, manager_password] and the first element of balance to manager_balance.
+Pseudocode
 
-3. Start a while loop that continues as long as terminate is false. a. Display the main menu with options for creating a new account, balance
-inquiry, deposit, withdrawal, closing an account, and accessing the manager pannel. b. Get the user's transaction choice and convert it to uppercase.
-c. If the transaction choice is 'O' (create new account):
+Step 1: Initialize Variables:
+total_numbers, count, logged_in_user, manager_password, manager_account, system_constant, manager_balance, login_acc, login_pin, my_acc, new_acc, new_balance, transaction, check_user, terminate
+Initialize Arrays:
 
-4.If count is less than total_numbers:
- If the user is logged in:
- Print a message indicating that a new account cannot be created while logged in.
-5.Else:
- While the login pin is less than 100 or greater than or equal to 1000 or the new balance is less than or equal to 10:
- Ask the user to choose a 3-digit pin code that starts without 0 and deposit an amount greater than 10.
- Set new_acc to manager_account + count.
- Print a message indicating that the account has been created successfully and display the account number and pin.
- Set the account number, pin, and balance for the current count in the account and balance arrays.
- Increment the count and logged_in_user variables.
-6.Else:
- Print a message indicating that the maximum number of accounts has been reached. c. If the transaction choice is not 'O':
- If the user is not logged in:
- Ask the user to enter their account number.
- If the account number does not exist:
- Print a message indicating that no account was found and continue to the next iteration of the while loop.
+Step 2: Initialize a 2D array account with total_numbers rows and 2 columns.
 
+Step 3: Initialize a float array balance with total_numbers elements.
+Set the first element of account to [manager_account, manager_password] and the first element of balance to manager_balance.
+Main Program Loop:
 
+Step 4: Start a while loop that continues as long as terminate is false.
+a. Display Main Menu:
 
+Display the main menu with options for creating a new account, balance inquiry, deposit, withdrawal, closing an account, and accessing the manager panel.
+b. Get Transaction Choice:
+
+Get the user's transaction choice and convert it to uppercase.
+c. Process Transaction:
+
+If the transaction choice is 'O' (create new account):
+
+If count is less than total_numbers:
+If the user is logged in:
+Print a message indicating that a new account cannot be created while logged in.
+Else:
+While the login pin is less than 100 or greater than or equal to 1000, or the new balance is less than or equal to 10:
+Ask the user to choose a 3-digit pin code that starts without 0 and deposit an amount greater than 10.
+Set new_acc to manager_account + count.
+Print a message indicating that the account has been created successfully and display the account number and pin.
+Set the account number, pin, and balance for the current count in the account and balance arrays.
+Increment the count and logged_in_user variables.
+Else:
+Print a message indicating that the maximum number of accounts has been reached.
+If the transaction choice is not 'O':
+
+If the user is not logged in:
+Ask the user to enter their account number.
+If the account number does not exist:
+Print a message indicating that no account was found and continue to the next iteration of the while loop.
+Continue Main Loop:
+
+Continue with the main loop.
