@@ -8,6 +8,32 @@
 
 This program is a collaborative effort by the Bro Code group for the Fundamental of Programming I course. It is designed to manage a system of bank accounts, supporting various transactions, including opening an account, checking balances, making deposits and withdrawals, closing accounts, computing interest, and printing account information.
 
+## Team Members
+
+- **Leulseged Melaku (Organizer/Leader):**
+  - Organized the team and ensured effective collaboration.
+  - Implemented the main menu structure and overall program flow.
+  - Added functionality for account creation, login, and logout.
+  - Integrated the manager's panel and related transactions.
+  - Ensured proper communication and collaboration among team members.
+
+- **Liben Gebremedhin:**
+  - Contributed to the implementation of the account creation functionality (Transaction type 'O').
+  - Worked on the initial setup and structure of the program.
+
+- **Lemesa Elias:**
+  - Contributed to the balance inquiry functionality (Transaction type 'B').
+  - Participated in designing and implementing user authentication and pin validation.
+
+- **Lakemihret Getachew:**
+  - Contributed to the deposit functionality (Transaction type 'D').
+  - Assisted in handling deposit transactions and updating account balances.
+
+- **Liyuneh Rstey:**
+  - Contributed to the withdrawal functionality (Transaction type 'W').
+  - Collaborated on the implementation of withdrawal transactions and balance updates.
+
+
 ## Instructions
 
 1. **Open an Account (Transaction type: O)**
