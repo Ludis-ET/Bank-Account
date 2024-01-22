@@ -38,7 +38,7 @@ int main(){
         cout<<"**       Enter S if you are a manager    **\n";
         cout<<"**                                       **\n";
         cout<<"*******************************************\n";
-        cout<<"\n\tEnter any transaction ->";
+        cout<<"\n\tEnter any transaction characters ->";
         cin>>transaction;
         transaction = toupper(transaction);
         login_pin = 0;
@@ -49,13 +49,13 @@ int main(){
                     cout<<"To create new account you have to log out\n";
                 }else{
                     while (login_pin < 100 || login_pin >= 1000 || new_balance <= 10){
-                        cout<<"Choose a 3 digit pin code that starts without 0 for your account :";
+                        cout<<"Choose a 3 digit integer pin code that starts without 0 for your account :";
                         cin>>login_pin;
                         cout<<"Deposit money (minimum amount - $10) : $";
                         cin>>new_balance;
                     }
                     new_acc = manager_account + count;
-                    cout<<"Your account is created successfully!\n"<<"Your account number is "<<new_acc<<endl;
+                    cout<<"Your account is created successfully!\n"<<"Your account number is "<<new_acc<<endl<<"Your account password is "<<login_pin<<endl;
                     account[count][0] = new_acc;
                     account[count][1] = login_pin;
                     balance[count] = new_balance;
@@ -69,7 +69,7 @@ int main(){
             }
         }else{
             if (logged_in_user < 0){
-                cout<<"You are not logged in\n"<<"Complete your account number : "<<system_constant;
+                cout<<"You are not logged in\n"<<"Complete your account number ('1001---'): "<<system_constant;
                 cin>>login_acc;
                 if (account[login_acc][0] == 0){
                     cout<<"\nNo account found please try again!\n\n";
@@ -170,11 +170,11 @@ int main(){
                                     break;
                                 case 'p':
                                     cout<<"\n\nAll data:\n";
-                                    cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t\t|\n";
+                                    cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t\t\t|\n";
                                     cout<<"\t\t--------------------------------------------------\n";
                                     for (int i = 1; i <= total_numbers-1; i++){
                                         if (account[i][0] != 0){
-                                            cout<<"\t|\t"<<i<<"\t|\t"<<account[i][0]<<"\t\t|\t$"<<balance[i]<<"\t\t|\n";
+                                            cout<<"\t|\t"<<i<<"\t|\t"<<account[i][0]<<"\t\t|\t$"<<balance[i]<<"\t\t\t|\n";
                                             cout<<"\t\t--------------------------------------------------\n";
                                         }
                                     }
