@@ -1,0 +1,2 @@
+Initialize variables: total_numbers, count, logged_in_user, manager_password, manager_account, system_constant, manager_balance, login_acc,
+login_pin, my_acc, new_acc, new_balance, transaction, check_user, and terminate to their respective values.
