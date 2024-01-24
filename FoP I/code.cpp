@@ -10,7 +10,7 @@ int main(){
     float manager_balance = 1.5; // The manager's balance
     int login_acc,login_pin,my_acc,new_acc,new_balance = -1;
     char transaction;
-    bool check_user = true,terminate=false;
+    bool check_user = true,terminate1=false, terminate2=false;
 
 
     //variables for the s transaction a.k.a manager pannel
@@ -24,7 +24,7 @@ int main(){
     float balance[total_numbers] = {{manager_balance}};
 
 
-    while(terminate == false){
+    while(terminate1 == false){
         // Main menu
         cout<<"*******************************************\n";
         cout<<"**                                       **\n";
@@ -177,7 +177,7 @@ int main(){
                                     }
                                     break;
                                 case 'p':
-                                    cout<<"\n\nAll data:\n";
+                                    cout<<"\n\nAll data: "<<count-1<<" accounts found.\n";
                                     cout<<"\t|\tno\t|\tAccount numbers\t|\tAmount\t\t\t|\n";
                                     cout<<"\t\t--------------------------------------------------\n";
                                     for (int i = 1; i <= total_numbers-1; i++){
@@ -186,14 +186,14 @@ int main(){
                                             cout<<"\t\t--------------------------------------------------\n";
                                         }
                                     }
-                                    cout<<endl<<count-1<<" accounts found.\n";
                                     break;
                                 case 'e':
                                     cout<<"Are you sure you want to close all the account?(Y/n) :";
                                     cin>>confirm;
                                     if (confirm == 'Y'){
                                         cout<<"bank opreation terminated\n";
-                                        terminate = true;
+                                        terminate1 = true;
+                                        terminate2 = true;
                                         break;
                                     }else{
                                         cout<<"opreation cancelled!\n";
@@ -201,11 +201,10 @@ int main(){
                                     break;
                                 default:
                                     cout<<"Getting out of admin pannel...\n";
-                                    terminate = true;
+                                    terminate2 = true;
                                     break;
                             }
-                        }while(terminate = false);
-                        terminate = false;
+                        }while(terminate2 = false);
                     }else{
                         cout<<"You have no permission to access this transaction\n";
                     }
