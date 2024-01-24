@@ -191,7 +191,7 @@ int main(){
                                     cout<<"Are you sure you want to close all the account?(Y/n) :";
                                     cin>>confirm;
                                     if (confirm == 'Y'){
-                                        cout<<"bank opreation terminated\n";
+                                        cout<<"All accounts are closed and the bank opreation is terminated\n";
                                         terminate1 = true;
                                         terminate2 = true;
                                         break;
