@@ -1,145 +1,141 @@
-Step 1. Start
+1. Start
 
-Step 2. Initialize variables
-   total_numbers = 100
-   count = 1
-   logged_in_user = -1
-   manager_password = 123
-   manager_account = 1001000
-   system_constant = 1001
-   manager_balance = 0
-   login_acc, login_pin, my_acc, new_acc, new_balance = -1
-   transaction
-   check_user = true
-   terminate1 = false
-   terminate2 = false
+2. Initialize variables:
+   - total_numbers = 100
+   - count = 1
+   - logged_in_user = -1
+   - manager_password = 123, manager_account = 1001000, system_constant = 1001
+   - manager_balance = 0
+   - login_acc, login_pin, my_acc, new_acc, new_balance = -1
+   - transaction
+   - check_user = true, terminate1 = false, terminate2 = false
 
    // Variables for the 'S' transaction (manager panel)
-   interest, temp
-   confirm
+   - interest, temp
+   - confirm
 
    // Array of accounts and balances
-   account[total_numbers][2]
-   balance[total_numbers]
+   - account[total_numbers][2]
+   - balance[total_numbers]
 
-Step 3. While terminate1 is false:
-   Display main menu options
-   Read transaction from the user
-   Convert transaction to uppercase
+3. While terminate1 is false:
+   a. Display main menu options
+   b. Read transaction from the user
+   c. Convert transaction to uppercase
+   d. Set login_pin to 0
 
    // Transaction 'O' does not require a logged-in user
-   if transaction is 'O':
-      if count is less than total_numbers:
-         if logged_in_user is greater than or equal to 0:
-            Display error message: "To create a new account, you have to log out"
-         else:
-            // Check if the PIN is a 3-digit number and the balance is greater than or equal to $10
-            while login_pin < 100 or login_pin >= 1000 or new_balance <= 10:
-               Read login_pin
-               Read new_balance
-            new_acc = manager_account + count
-            Display success message with new_acc and login_pin
-            Update account and balance arrays
-            Set logged_in_user to count
-            Increment count
-      else:
-         Display error message: "The maximum number of accounts has been reached. You can't create a new account now."
+   e. If transaction is 'O':
+      i. If count is less than total_numbers:
+         - If logged_in_user is greater than or equal to 0:
+            - Display error message: "To create a new account, you have to log out"
+         - Else:
+            - While login_pin < 100 or login_pin >= 1000 or new_balance <= 10:
+               - Read login_pin
+               - Read new_balance
+            - Set new_acc to manager_account + count
+            - Display success message with new_acc and login_pin
+            - Update account and balance arrays
+            - Set logged_in_user to count
+            - Increment count
+      ii. Else:
+         - Display error message: "The maximum number of accounts has been reached. You can't create a new account now."
 
-Step 4. else:
-   // Check if the user is logged in
-   if logged_in_user is less than 0:
-      Display prompt to complete account number
-      Read login_acc
-      if login_acc is less than or equal to total_numbers:
-         if account[login_acc][0] is 0:
-            Display error message: "No account found. Please try again!"
-            Continue to step 3
-      else:
-         Display error message: "No account found. Please try again!"
-         Continue to step 3
+   // For other transactions
+   f. Else:
+      // Check if the user is logged in
+      i. If logged_in_user is less than 0:
+         - Display prompt to complete account number
+         - Read login_acc
+         - If login_acc is less than or equal to total_numbers:
+            - If account[login_acc][0] is 0:
+               - Display error message: "No account found. Please try again!"
+               - Continue to step 3a
+         - Else:
+            - Display error message: "No account found. Please try again!"
+            - Continue to step 3a
 
-   // User is logged in
-   else:
-      Set login_acc to account[logged_in_user][0] - manager_account
-      Display user's account number
-      Display prompt to enter PIN
-      Read login_pin
-      Set my_acc to manager_account + login_acc
+      // User is logged in
+      ii. Else:
+         - Set login_acc to account[logged_in_user][0] - manager_account
+         - Display user's account number
+         - Display prompt to enter PIN
+         - Read login_pin
+         - Set my_acc to manager_account + login_acc
 
-      // Log in
-      if account[login_acc][0] is equal to my_acc and account[login_acc][1] is equal to login_pin:
-         Set logged_in_user to login_acc
-      else:
-         Display error message: "Invalid PIN code. Login denied!"
-         Continue to step 3
+         // Log in
+         - If account[login_acc][0] is equal to my_acc and account[login_acc][1] is equal to login_pin:
+            - Set logged_in_user to login_acc
+         - Else:
+            - Display error message: "Invalid PIN code. Login denied!"
+            - Continue to step 3a
 
-      // Perform transactions
-      if logged_in_user is greater than or equal to 0:
-         Switch transaction:
-            Case 'B':
-               Display account number and balance
-            Case 'D':
-               Display current balance
-               Read new_balance
-               if new_balance is greater than 0:
-                  Display success message with updated balance
-                  Update balance array
-               else:
-                  Display error message: "Deposit amount must be greater than 0"
-            Case 'W':
-               Display current balance
-               Read new_balance
-               if new_balance is greater than 0 and less than or equal to balance[logged_in_user]:
-                  Display success message with updated balance
-                  Update balance array
-               else:
-                  Display error message: "Amount has to be less than your balance"
-            Case 'C':
-               Display account number
-               Display confirmation prompt
-               Read confirm
-               if confirm is 'Y':
-                  Display success message: "Logged out successfully! You can return anytime."
-                  Set logged_in_user to -1
-               else:
-                  Display message: "Operation cancelled!"
-            Case 'S':
-               // Manager panel
-               if logged_in_user is 0:
-                  Repeat until terminate2 is true:
-                     Display manager panel options
-                     Read transaction
-                     Convert transaction to lowercase
+         // Perform transactions
+         - If logged_in_user is greater than or equal to 0:
+            - Switch transaction:
+               - Case 'B':
+                  - Display account number and balance
+               - Case 'D':
+                  - Display current balance
+                  - Read new_balance
+                  - If new_balance is greater than 0:
+                     - Display success message with updated balance
+                     - Update balance array
+                  - Else:
+                     - Display error message: "Deposit amount must be greater than 0"
+               - Case 'W':
+                  - Display current balance
+                  - Read new_balance
+                  - If new_balance is greater than 0 and less than or equal to balance[logged_in_user]:
+                     - Display success message with updated balance
+                     - Update balance array
+                  - Else:
+                     - Display error message: "Amount has to be less than your balance"
+               - Case 'C':
+                  - Display account number
+                  - Display confirmation prompt
+                  - Read confirm
+                  - If confirm is 'Y':
+                     - Display success message: "Logged out successfully! You can return anytime."
+                     - Set logged_in_user to -1
+                  - Else:
+                     - Display message: "Operation cancelled!"
+               - Case 'S':
+                  - If logged_in_user is 0:
+                     - Repeat until terminate2 is true:
+                        - Display manager panel options
+                        - Read transaction
+                        - Convert transaction to lowercase
 
-                     Switch transaction:
-                        Case 'i':
-                           Display prompt for interest rate
-                           Read interest
-                           if interest is between 0 and 100:
-                              Update balances with interest
-                              Display success message with the number of accounts affected
-                           else:
-                              Display error message: "Interest must be between 0% and 100%"
-                        Case 'p':
-                           Display all accounts and balances
-                        Case 'e':
-                           Display confirmation prompt
-                           Read confirm
-                           if confirm is 'Y':
-                              Display success message: "All accounts are closed. Exiting program."
-                              Set terminate1 and terminate2 to true
-                           else:
-                              Display message: "Operation cancelled!"
-                        Default:
-                           Display message: "Getting out of admin panel..."
-                           Set terminate2 to true
-               else:
-                  Display error message: "You have no permission to access this transaction"
-            Default:
-               Display error message: "Invalid transaction entered. Please choose one from the menu"
-      else:
-         Display error message: "Login first to access this page!"
+                        - Switch transaction:
+                           - Case 'i':
+                              - Display prompt for interest rate
+                              - Read interest
+                              - If interest is between 0 and 100:
+                                 - Update balances with interest
+                                 - Display success message with the number of accounts affected
+                              - Else:
+                                 - Display error message: "Interest must be between 0% and 100%"
+                           - Case 'p':
+                              - Display all accounts and balances
+                           - Case 'e':
+                              - Display confirmation prompt
+                              - Read confirm
+                              - If confirm is 'Y':
+                                 - Display success message: "All accounts are closed. Exiting program."
+                                 - Set terminate1 and terminate2 to true
+                              - Else:
+                                 - Display message: "Operation cancelled!"
+                           - Default:
+                              - Display message: "Getting out of admin panel..."
+                              - Set terminate2 to true
+                  - Else:
+                     - Display error message: "You have no permission to access this transaction"
+               - Default:
+                  - Display error message: "Invalid transaction entered. Please choose one from the menu"
+         - Else:
+            - Display error message: "Login first to access this page!"
 
-Step 5. End while loop
+4. End while loop
 
-Step 6. End
+5. End
