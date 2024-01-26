@@ -1,5 +1,4 @@
 #include<iostream>
-#include<cctype>
 using namespace std;
 int main(){
     // variables
@@ -7,7 +6,7 @@ int main(){
     int count = 1; // number of accounts that have been created?
     int logged_in_user = -1; // the index of logged in user
     int manager_password = 123, manager_account = 1001000,  system_constant = 1001; // manager account and password
-    float manager_balance = 1.5; // The manager's balance
+    float manager_balance = 0; // The manager's balance
     int login_acc,login_pin,my_acc,new_acc,new_balance = -1;
     char transaction;
     bool check_user = true,terminate1=false, terminate2=false;
@@ -77,7 +76,12 @@ int main(){
             if (logged_in_user < 0){
                 cout<<"You are not logged in\n"<<"Complete your account number ('1001---'): "<<system_constant;
                 cin>>login_acc;
-                if (account[login_acc][0] == 0){
+                if (login_acc <= total_numbers){
+                    if(account[login_acc][0] == 0){
+                    cout<<"\nNo account found please try again!\n\n";
+                    continue;
+                    }
+                }else{
                     cout<<"\nNo account found please try again!\n\n";
                     continue;
                 }
