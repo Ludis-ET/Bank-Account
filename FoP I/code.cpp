@@ -167,9 +167,9 @@ int main(){
 
                             switch(transaction){
                                 case 'i':
-                                    cout<<"Interest rate? (0% - 100%):";
+                                    cout<<"Interest rate? ( >= 0%):";
                                     cin>>interest;
-                                    if(interest >= 0 && interest <= 100){
+                                    if(interest >= 0 ){
                                         for (int i = 0; i <= total_numbers-1; i++){
                                             temp = balance[i];
                                             temp *= (interest/100);
@@ -177,7 +177,7 @@ int main(){
                                         }
                                         cout<<interest<<"% amount of money has been added to "<<count-1<<" accounts in the database.\n";
                                     }else{
-                                        cout<<"Interest have to be between 0% and 100%";
+                                        cout<<"Interest have to be greator than 0%";
                                     }
                                     break;
                                 case 'p':
