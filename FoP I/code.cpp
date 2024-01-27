@@ -98,7 +98,7 @@ int main(){
                 logged_in_user = login_acc;
             }
             else{
-                cout<<"Invalid Pin Code, Login denied!\n";
+                cout<<"Invalid Pin Code\n";
                 continue;
             }
 
