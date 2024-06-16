@@ -105,7 +105,10 @@ public:
                         break;
                     case 7:
                         clearTerminal();
-                        managerMenu();
+                        local.userType == "manager" ? 
+                            managerMenu():
+                            Message("You are not a manager");
+                        mainMenu();
                         break;
                 }
             }
@@ -366,7 +369,6 @@ public:
     }
 
     void managerMenu() {
-        clearTerminal();
         int menu;
         cout << "\t\t\t\t\t\t*******************************************\n";
         cout << "\t\t\t\t\t\t**                                       **\n";
@@ -451,7 +453,6 @@ public:
         Account account;
 
         while (database >> account.id >> account.name >> account.password >> account.balance >> account.userType) {
-            // Apply interest rate (for demonstration, assuming 5% interest)
             account.balance *= 1.05;
             accounts.push_back(account);
         }
