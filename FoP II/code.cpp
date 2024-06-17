@@ -533,7 +533,7 @@ class BankSystem {
             database.close();
             return count;
         }
-    };
+};
 
 int main() {
     BankSystem bankSystem;
