@@ -25,7 +25,7 @@ class BankSystem {
     public:
         void mainMenu() {
             int menu;
-            cout << "\t\t\tWelcome to the Bank of Somebody" << endl;
+            cout << "\t\t\tWelcome to the Bank of BroCode" << endl;
             cout << "\t\t\t\t\t\t*******************************************\n";
             cout << "\t\t\t\t\t\t**                                       **\n";
             cout << "\t\t\t\t\t\t**   --Main Menu --                      **\n";
@@ -54,6 +54,7 @@ class BankSystem {
             } else if (menu == 0) {
                 clearTerminal();
                 Message("Logout successful. Thank you for using our service.");
+                userID = -1;
             } else if (menu == 1) {
                 clearTerminal();
                 Message("Create New Account");
@@ -439,19 +440,32 @@ class BankSystem {
             cout << "\t\t\t\t\t\t*******************************************\n";
             cout << "\t\t\t\t\t\t**         All Accounts                   **\n";
             cout << "\t\t\t\t\t\t*******************************************\n";
-            cout << setw(10) << "ID" << setw(20) << "Name" << setw(15) << "Balance" << setw(15) << "User Type" << endl;
+            cout << "\t\t\t" << setw(10) << "ID" << setw(20) << "Name" << setw(15) << "Balance" << setw(15) << "User Type" << endl;
             cout << "\t\t\t--------------------------------------------------------\n";
 
             Account account;
-            int i = 0;
+            int totalAccounts = 0;
+            double totalMoney = 0.0;
+            int totalManagers = 0;
+            int totalClients = 0;
+
             while (database >> account.id >> account.name >> account.password >> account.balance >> account.userType) {
                 cout << "\t\t\t" << setw(10) << account.id << setw(20) << account.name << setw(15) << fixed << setprecision(2) << account.balance << setw(15) << account.userType << endl;
-                i++;
+                totalAccounts++;
+                totalMoney += account.balance;
+                if (account.userType == "manager") {
+                    totalManagers++;
+                } else if (account.userType == "client") {
+                    totalClients++;
+                }
             }
 
             database.close();
             cout << "\t\t\t--------------------------------------------------------\n";
-            cout << "\t\t\tTotal accounts: " << i << endl;
+            cout << "\t\t\tTotal accounts: " << totalAccounts << endl;
+            cout << "\t\t\tTotal money: $" << fixed << setprecision(2) << totalMoney << endl;
+            cout << "\t\t\tTotal managers: " << totalManagers << endl;
+            cout << "\t\t\tTotal clients: " << totalClients << endl;
             cout << "\t\t\t--------------------------------------------------------\n";
             managerMenu();
         }
