@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include<iomanip>
 
 using namespace std;
 
@@ -46,7 +47,7 @@ public:
     }
 
     void myChoice(int menu) {
-        if (menu < 0 || menu > 8 || (menu == 8 && local.userType != "manager")) {
+        if (menu < 0 || menu > 7) {
             clearTerminal();
             Message("Invalid Choice");
             mainMenu();
@@ -115,7 +116,7 @@ public:
         }
     }
 
-    void createAccount(string userType = "client") {
+    void createAccount() {
         fstream database("database.txt", ios::out | ios::app);
         if (!database.is_open()) {
             clearTerminal();
@@ -125,6 +126,7 @@ public:
         }
 
         Account newAccount;
+        string userType = "client";
 
         newAccount.id = (BANK_CODE * MIN_CAPACITY) + (countUsers() + 1);
 
@@ -135,8 +137,7 @@ public:
         getline(cin, newAccount.password);
         cout << "Enter your initial deposit: ";
         cin >> newAccount.balance;
-
-        if (local.userType == "manager" && userType == "client") {
+        if (local.userType == "manager") {
             cout << "Enter user type (manager/client, default is client): ";
             cin >> userType;
         }
@@ -183,6 +184,7 @@ public:
                 local.userType = account.userType;
 
                 mainMenu();
+                database.close();
                 return;
             }
         }
@@ -236,7 +238,7 @@ public:
     }
 
     void updateProfileInDatabase() {
-        fstream database("database.txt", ios::in | ios::out);
+        fstream database("database.txt", ios::in);
         if (!database.is_open()) {
             clearTerminal();
             Message("Database not found");
@@ -246,28 +248,42 @@ public:
 
         Account account;
         bool found = false;
+        vector<Account> accounts;
 
         while (database >> account.id >> account.name >> account.password >> account.balance >> account.userType) {
             if (account.id == local.id) {
                 account.name = local.name;
                 account.password = local.password;
-                database.seekp(database.tellg());
-                database << account.id << " " << account.name << " " << account.password << " " << account.balance << " " << account.userType << endl;
                 found = true;
-                break;
             }
+            accounts.push_back(account);
         }
 
         database.close();
 
-        if (found) {
-            clearTerminal();
-            Message("Profile updated successfully!");
-        } else {
+        if (!found) {
             clearTerminal();
             Message("User not found in the database.");
+            mainMenu();
+            return;
         }
 
+        database.open("database.txt", ios::out | ios::trunc);
+        if (!database.is_open()) {
+            clearTerminal();
+            Message("Error opening database for writing");
+            mainMenu();
+            return;
+        }
+
+        for (const auto& acc : accounts) {
+            database << acc.id << " " << acc.name << " " << acc.password << " " << acc.balance << " " << acc.userType << endl;
+        }
+
+        database.close();
+
+        clearTerminal();
+        Message("Profile updated successfully!");
         mainMenu();
     }
 
@@ -423,25 +439,25 @@ public:
         cout << "\t\t\t\t\t\t*******************************************\n";
         cout << "\t\t\t\t\t\t**         All Accounts                   **\n";
         cout << "\t\t\t\t\t\t*******************************************\n";
-        cout << "\t\t\tID\tName\t\tBalance\tUser Type\n";
-        cout << "\t\t\t-------------------------------------------\n";
+        cout << setw(10) << "ID" << setw(20) << "Name" << setw(15) << "Balance" << setw(15) << "User Type" << endl;
+        cout << "\t\t\t--------------------------------------------------------\n";
 
         Account account;
         int i = 0;
         while (database >> account.id >> account.name >> account.password >> account.balance >> account.userType) {
-            cout << "\t\t\t" << account.id << "\t" << account.name << "\t\t$" << account.balance << "\t" << account.userType << endl;
+            cout << "\t\t\t" << setw(10) << account.id << setw(20) << account.name << setw(15) << fixed << setprecision(2) << account.balance << setw(15) << account.userType << endl;
             i++;
         }
 
         database.close();
-        cout << "\t\t\t-------------------------------------------\n";
+        cout << "\t\t\t--------------------------------------------------------\n";
         cout << "\t\t\tTotal accounts: " << i << endl;
-        cout << "\t\t\t-------------------------------------------\n";
+        cout << "\t\t\t--------------------------------------------------------\n";
         managerMenu();
     }
 
     void applyInterest() {
-        fstream database("database.txt", ios::in | ios::out);
+        fstream database("database.txt", ios::in);
         if (!database.is_open()) {
             clearTerminal();
             Message("Database not found");
@@ -449,11 +465,15 @@ public:
             return;
         }
 
+        double interestRate;
+        cout << "Enter the interest rate (e.g., for 5% enter 0.05): ";
+        cin >> interestRate;
+
         vector<Account> accounts;
         Account account;
 
         while (database >> account.id >> account.name >> account.password >> account.balance >> account.userType) {
-            account.balance *= 1.05;
+            account.balance += account.balance * interestRate;
             accounts.push_back(account);
         }
 
